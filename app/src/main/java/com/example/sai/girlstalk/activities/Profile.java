@@ -142,13 +142,13 @@ public class Profile extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            startActivity(new Intent(Profile.this,MainActivity.class));
-            finish();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            startActivity(new Intent(Profile.this,MainActivity.class));
+//            finish();
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }
