@@ -51,7 +51,8 @@ public class UserRepository {
                 if (Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).isEmailVerified())
                     result.setValue(true);
                 else {
-                    firebaseUtils.getAuthInstance().signOut();
+                    firebaseUtils.getAuthInstance().getCurrentUser().delete();
+                    Toast.makeText(application, "User doesn't exist", Toast.LENGTH_LONG).show();
                     result.setValue(false);
                 }
             else {
@@ -64,31 +65,27 @@ public class UserRepository {
 
     public LiveData<Boolean> signUp(User newUser) {
         MutableLiveData<Boolean> result = new MutableLiveData<>();
+        Toast.makeText(application, "User verification Mail sent!!!", Toast.LENGTH_LONG).show();
 
-        firebaseUtils.getAuthInstance().createUserWithEmailAndPassword(newUser.getEmmail(), newUser.getPassword()).addOnCompleteListener(task ->
+        Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).sendEmailVerification().addOnCompleteListener(emailResult ->
         {
-            if (task.isSuccessful())
-                Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).sendEmailVerification().addOnCompleteListener(emailResult ->
+            if (emailResult.isSuccessful()) {
+                firebaseUtils.getDbInstance().collection("Users").add(newUser).addOnCompleteListener(addResult ->
                 {
-                    if (emailResult.isSuccessful()) {
-                        firebaseUtils.getDbInstance().collection("Users").add(newUser).addOnCompleteListener(addResult ->
-                        {
-                            if (addResult.isSuccessful()) {
-                                firebaseUtils.getAuthInstance().signOut();
-                                result.setValue(true);
-                            } else {
-                                Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).delete();
-                                firebaseUtils.getAuthInstance().signOut();
-                                result.setValue(false);
-                            }
-                        });
+                    if (addResult.isSuccessful()) {
+                        firebaseUtils.getAuthInstance().signOut();
+                        result.setValue(true);
                     } else {
                         Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).delete();
                         firebaseUtils.getAuthInstance().signOut();
                         result.setValue(false);
                     }
                 });
-            else result.setValue(false);
+            } else {
+                Objects.requireNonNull(firebaseUtils.getAuthInstance().getCurrentUser()).delete();
+                firebaseUtils.getAuthInstance().signOut();
+                result.setValue(false);
+            }
         });
         return result;
     }

@@ -3,7 +3,6 @@ package com.example.sai.girlstalk.models;
 public class User {
     private String username;
     private String password;
-    private String emmail;
     private UserProfile profile;
 
     public User() {
@@ -12,7 +11,6 @@ public class User {
     public User(String username, String emmail, String password) {
         this.username = username;
         this.password = password;
-        this.emmail = emmail;
     }
 
     public User(String username, String email, String password, UserProfile profile) {
@@ -45,11 +43,4 @@ public class User {
         this.profile = profile;
     }
 
-    public String getEmmail() {
-        return emmail;
-    }
-
-    public void setEmmail(String emmail) {
-        this.emmail = emmail;
-    }
 }

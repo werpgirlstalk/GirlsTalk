@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -50,23 +49,20 @@ public class Register1 extends AppCompatActivity {
         inputName.setAnimation(slideleft);
 
 
-        lgprogress1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = inputName.getText().toString();
-                if (TextUtils.isEmpty(name))
-                    Toast.makeText(Register1.this, "Please Fill Up Your Name", Toast.LENGTH_LONG).show();
-                else {
-                    Intent i = new Intent(Register1.this, Register2.class);
+        lgprogress1.setOnClickListener(v -> {
+            String name = inputName.getText().toString();
+            if (TextUtils.isEmpty(name))
+                Toast.makeText(Register1.this, "Please Fill Up Your Name", Toast.LENGTH_LONG).show();
+            else {
+                Intent i = new Intent(Register1.this, Register2.class);
 //                    i.putExtra("name",name);
-                    startActivity(i);
+                startActivity(i);
 
-                    SharedPreferences preferences = getSharedPreferences("NAME", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("uName", name);
-                    editor.apply();
-                    finish();
-                }
+                SharedPreferences preferences = getSharedPreferences("NAME", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("uName", name);
+                editor.apply();
+                finish();
             }
         });
 
