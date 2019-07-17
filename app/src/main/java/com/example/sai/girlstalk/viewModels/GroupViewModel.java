@@ -48,8 +48,7 @@ public class GroupViewModel extends AndroidViewModel {
         return groupRepository.getAllMembers(groupTitle);
     }
 
-    public LiveData<List<Group>> getUserGroups(UserProfile userProfile)
-    {
+    public LiveData<List<Group>> getUserGroups(UserProfile userProfile) {
         return groupRepository.getUserGroups(userProfile);
     }
 }

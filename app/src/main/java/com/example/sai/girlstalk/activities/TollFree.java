@@ -45,7 +45,7 @@ public class TollFree extends AppCompatActivity {
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
         NetworkHelper helper = new NetworkHelper();
-        helper.checkNet(coordinatorLayout,this);
+        helper.checkNet(coordinatorLayout, this);
         //Define recycleview
         recycler_view = (RecyclerView) findViewById(R.id.recycler_Expand);
         recycler_view.setLayoutManager(new LinearLayoutManager(this));
@@ -98,16 +98,20 @@ public class TollFree extends AppCompatActivity {
 
                     }
                 } else {
-                    Snackbar.make(coordinatorLayout,"Error loading data",Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(coordinatorLayout, "Error loading data", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-
-
     }
 
+    public void call(ChildList childItem) {
+        String number = childItem.getBody();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + number));
+        startActivity(intent);
+    }
 
     public class DocExpandableRecyclerAdapter extends ExpandableRecyclerViewAdapter<MyParentViewHolder, MyChildViewHolder> {
 
@@ -152,12 +156,6 @@ public class TollFree extends AppCompatActivity {
         }
 
 
-    }
-    public void call(ChildList childItem){
-        String number = childItem.getBody();
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + number));
-        startActivity(intent);
     }
 
 }

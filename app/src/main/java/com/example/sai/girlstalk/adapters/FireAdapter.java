@@ -12,12 +12,11 @@ import com.example.sai.girlstalk.activities.StateNames;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class FireAdapter extends FirestoreRecyclerAdapter<StateNames,FireAdapter.ViewHolder> {
+public class FireAdapter extends FirestoreRecyclerAdapter<StateNames, FireAdapter.ViewHolder> {
 
     public FireAdapter(@NonNull FirestoreRecyclerOptions<StateNames> options) {
         super(options);
     }
-
 
 
     @Override
@@ -28,12 +27,13 @@ public class FireAdapter extends FirestoreRecyclerAdapter<StateNames,FireAdapter
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.note_item,viewGroup,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.note_item, viewGroup, false);
         return new ViewHolder(v);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView stateNames;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             stateNames = itemView.findViewById(R.id.state);

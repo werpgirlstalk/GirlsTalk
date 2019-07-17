@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class UserRepository {
-    private FirebaseUtils firebaseUtils;
     private static UserRepository userRepository;
+    private FirebaseUtils firebaseUtils;
     private Application application;
 
     private UserRepository(Application application) {
@@ -109,7 +109,7 @@ public class UserRepository {
     public LiveData<User> getUser(String email) {
         MutableLiveData<User> result = new MutableLiveData<>();
 
-        firebaseUtils.getDbInstance().collection("Users").whereEqualTo("profile .email", email)
+        firebaseUtils.getDbInstance().collection("Users").whereEqualTo("profile.email", email)
                 .get().addOnCompleteListener(task ->
         {
             if (task.isSuccessful()) {

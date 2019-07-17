@@ -1,10 +1,9 @@
 package com.example.sai.girlstalk.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -41,12 +40,13 @@ public class SearchActivity extends AppCompatActivity implements FriendClickList
         {
             userViewModel.getUser(FirebaseUtils.getInstance().getAuthInstance().getCurrentUser().getEmail()).observe(this, currentUser ->
             {
-                if (currentUser != null) userViewModel.sendFriendRequest(user.getProfile().getEmail(), currentUser.getProfile())
-                        .observe(SearchActivity.this, result ->
-                        {
-                            if (result != null) if (result)
-                                Toast.makeText(SearchActivity.this, "Request Sent", Toast.LENGTH_SHORT).show();
-                        });
+                if (currentUser != null)
+                    userViewModel.sendFriendRequest(user.getProfile().getEmail(), currentUser.getProfile())
+                            .observe(SearchActivity.this, result ->
+                            {
+                                if (result != null) if (result)
+                                    Toast.makeText(SearchActivity.this, "Request Sent", Toast.LENGTH_SHORT).show();
+                            });
 
             });
         });

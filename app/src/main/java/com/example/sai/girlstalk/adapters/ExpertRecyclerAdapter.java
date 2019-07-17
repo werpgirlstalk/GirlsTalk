@@ -29,7 +29,7 @@ public class ExpertRecyclerAdapter extends RecyclerView.Adapter<ExpertRecyclerAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View view = layoutInflater.inflate(R.layout.experts_row,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.experts_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
@@ -48,13 +48,14 @@ public class ExpertRecyclerAdapter extends RecyclerView.Adapter<ExpertRecyclerAd
         return list.size();
     }
 
-     class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView expertImage;
         TextView expertName;
+
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            expertImage= itemView.findViewById(R.id.expertImage);
+            expertImage = itemView.findViewById(R.id.expertImage);
             expertName = itemView.findViewById(R.id.expertName);
         }
     }

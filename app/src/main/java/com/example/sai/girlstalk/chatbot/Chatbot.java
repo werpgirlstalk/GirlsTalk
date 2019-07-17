@@ -37,27 +37,27 @@ import java.util.ArrayList;
 public class Chatbot extends AppCompatActivity {
 
 
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private static final int RECORD_REQUEST_CODE = 101;
+    private static String TAG = "MainActivity";
+    //private Map<String,Object> context = new HashMap<>();
+    com.ibm.watson.developer_cloud.assistant.v1.model.Context context = null;
+    StreamPlayer streamPlayer;
+    //
+    android.speech.tts.TextToSpeech mTTS;
+    SpeechRecognizer speechRecognizer;
     private RecyclerView recyclerView;
     private ChatAdapter mAdapter;
     private ArrayList messageArrayList;
     private EditText inputMessage;
     private ImageButton btnSend;
-    //private Map<String,Object> context = new HashMap<>();
-    com.ibm.watson.developer_cloud.assistant.v1.model.Context context = null;
-    StreamPlayer streamPlayer;
     private boolean initialRequest;
     private boolean permissionToRecordAccepted = false;
-    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-    private static String TAG = "MainActivity";
-    private static final int RECORD_REQUEST_CODE = 101;
     private boolean listening = false;
     private SpeechToText speechService;
     private MicrophoneInputStream capture;
     private SpeakerLabelsDiarization.RecoTokens recoTokens;
     private MicrophoneHelper microphoneHelper;
-    //
-    android.speech.tts.TextToSpeech mTTS;
-    SpeechRecognizer speechRecognizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,17 +92,14 @@ public class Chatbot extends AppCompatActivity {
         textService.setEndPoint("https://gateway-lon.watsonplatform.net/assistant/api");
 
 
-
         btnSend.setOnClickListener(v -> {
-            if(checkInternetConnection()) {
+            if (checkInternetConnection()) {
                 sendMessage();
             }
         });
 
 
     }
-
-
 
 
     protected void makeRequest() {
@@ -116,14 +113,12 @@ public class Chatbot extends AppCompatActivity {
     private void sendMessage() {
 
         final String inputmessage = this.inputMessage.getText().toString().trim();
-        if(!this.initialRequest) {
+        if (!this.initialRequest) {
             Message inputMessage = new Message();
             inputMessage.setMessage(inputmessage);
             inputMessage.setId("1");
             messageArrayList.add(inputMessage);
-        }
-        else
-        {
+        } else {
             Message inputMessage = new Message();
             inputMessage.setMessage(inputmessage);
             inputMessage.setId("100");
@@ -133,7 +128,7 @@ public class Chatbot extends AppCompatActivity {
         this.inputMessage.setText("");
         mAdapter.notifyDataSetChanged();
 
-        Thread thread = new Thread(new Runnable(){
+        Thread thread = new Thread(new Runnable() {
             public void run() {
                 try {
 
@@ -151,34 +146,30 @@ public class Chatbot extends AppCompatActivity {
                     //WORKSPACES are now SKILLS
                     MessageOptions options = new MessageOptions.Builder().workspaceId("1a89af48-9456-494a-8abd-1ca529fa0601").input(input).context(context).build();
                     MessageResponse response = assistantservice.message(options).execute();
-                    Log.i(TAG, "run: "+response);
+                    Log.i(TAG, "run: " + response);
 
                     String outputText = "";
-                    int length=response.getOutput().getText().size();
-                    Log.i(TAG, "run: "+length);
-                    if(length>1) {
+                    int length = response.getOutput().getText().size();
+                    Log.i(TAG, "run: " + length);
+                    if (length > 1) {
                         for (int i = 0; i < length; i++) {
                             outputText += '\n' + response.getOutput().getText().get(i).trim();
                         }
-                    }
-                    else
+                    } else
                         outputText = response.getOutput().getText().get(0);
 
-                    Log.i(TAG, "run: "+outputText);
+                    Log.i(TAG, "run: " + outputText);
                     //Passing Context of last conversation
-                    if(response.getContext() !=null)
-                    {
+                    if (response.getContext() != null) {
                         //context.clear();
                         context = response.getContext();
 
                     }
-                    Message outMessage=new Message();
-                    if(response!=null)
-                    {
-                        if(response.getOutput()!=null && response.getOutput().containsKey("text"))
-                        {
+                    Message outMessage = new Message();
+                    if (response != null) {
+                        if (response.getOutput() != null && response.getOutput().containsKey("text")) {
                             ArrayList responseList = (ArrayList) response.getOutput().get("text");
-                            if(null !=responseList && responseList.size()>0){
+                            if (null != responseList && responseList.size() > 0) {
                                 outMessage.setMessage(outputText);
                                 outMessage.setId("2");
                             }
@@ -189,7 +180,7 @@ public class Chatbot extends AppCompatActivity {
                             public void run() {
                                 mAdapter.notifyDataSetChanged();
                                 if (mAdapter.getItemCount() > 1) {
-                                    recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount()-1);
+                                    recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
 
                                 }
 
@@ -211,22 +202,22 @@ public class Chatbot extends AppCompatActivity {
 
     /**
      * Check Internet Connection
+     *
      * @return
      */
     private boolean checkInternetConnection() {
         // get Connectivity Manager object to check connection
         ConnectivityManager cm =
-                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
 
         // Check for network connections
-        if (isConnected){
+        if (isConnected) {
             return true;
-        }
-        else {
+        } else {
             Toast.makeText(this, " No Internet Connection available ", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -245,8 +236,6 @@ public class Chatbot extends AppCompatActivity {
                 //.speakerLabels(true)
                 .build();
     }
-
-
 
 
 }

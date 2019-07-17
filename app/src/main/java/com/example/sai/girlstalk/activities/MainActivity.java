@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_friends) {
             startActivity(new Intent(getApplicationContext(), SearchActivity.class));
         } else if (id == R.id.nav_create_group) {
-            startActivity(new Intent(getApplicationContext(), MainGroupChat.class));
+            startActivity(new Intent(getApplicationContext(), GroupChatActivity.class));
         } else if (id == R.id.nav_vacancy) {
 
         } else if (id == R.id.nav_share) {

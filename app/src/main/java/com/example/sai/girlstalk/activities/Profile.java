@@ -1,25 +1,17 @@
 package com.example.sai.girlstalk.activities;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -28,11 +20,8 @@ import android.widget.Toast;
 
 import com.example.sai.GirlsTalk.R;
 import com.example.sai.girlstalk.utils.NetworkHelper;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -40,19 +29,18 @@ import java.util.Objects;
 
 public class Profile extends AppCompatActivity {
 
+    String savedSkills;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference docRef = db.document("Users/u39FwJiCjuuPJZBWSIGt");
-    private TextView name,state;
+    private TextView name, state;
     private ListView listitems;
-    private String[] title={"email","phone number","My skills"};
-    private  ArrayList<String> info;
+    private String[] title = {"email", "phone number", "My skills"};
+    private ArrayList<String> info;
     private RatingBar rating;
     private TextView rate;
-    String savedSkills;
-    private boolean isFirstRun=true;
+    private boolean isFirstRun = true;
     private CoordinatorLayout coordinatorLayout;
-    private int[] icons = {R.drawable.gmail, R.drawable.phone,R.drawable.skills};
-
+    private int[] icons = {R.drawable.gmail, R.drawable.phone, R.drawable.skills};
 
 
     @Override
@@ -70,7 +58,7 @@ public class Profile extends AppCompatActivity {
 
 
         NetworkHelper helper = new NetworkHelper();
-        helper.checkNet(coordinatorLayout,this);
+        helper.checkNet(coordinatorLayout, this);
 
         rating.setNumStars(5);
         rating.setFocusable(false);
@@ -78,11 +66,10 @@ public class Profile extends AppCompatActivity {
 
         info = new ArrayList<>();
         info.add(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
-        SharedPreferences getPhoneNo = getSharedPreferences("PHONE_NO",MODE_PRIVATE);
-        info.add(getPhoneNo.getString("p_no",null));
+        SharedPreferences getPhoneNo = getSharedPreferences("PHONE_NO", MODE_PRIVATE);
+        info.add(getPhoneNo.getString("p_no", null));
         info.add("View my skills");
         loadInfo();
-
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -96,22 +83,23 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    private void loadInfo(){
+    private void loadInfo() {
         docRef.get()
                 .addOnSuccessListener(documentSnapshot -> {
-                        if (documentSnapshot.exists()){
-                            String uName = documentSnapshot.getString("username");
-                            long ratings = documentSnapshot.getLong("ratings");
+                    if (documentSnapshot.exists()) {
+                        String uName = documentSnapshot.getString("username");
+                        long ratings = documentSnapshot.getLong("ratings");
 
-                            name.setText(uName);
-                            rating.setRating(ratings);
-                            state.setText("Maharashtra");
-                        }else {
-                            Toast.makeText(Profile.this, "Info loading error!", Toast.LENGTH_SHORT).show();
-                        }
+                        name.setText(uName);
+                        rating.setRating(ratings);
+                        state.setText("Maharashtra");
+                    } else {
+                        Toast.makeText(Profile.this, "Info loading error!", Toast.LENGTH_SHORT).show();
+                    }
                 }).addOnFailureListener(e -> Toast.makeText(Profile.this, "Something went wrong!", Toast.LENGTH_SHORT).show());
     }
-    class CustomAdapter extends BaseAdapter{
+
+    class CustomAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {

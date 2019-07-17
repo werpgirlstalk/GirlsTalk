@@ -12,27 +12,6 @@ import android.view.View;
 
 public class NetworkHelper {
 
-    public void checkNet(final CoordinatorLayout coordinatorLayout, final Context context) {
-        if (!isNetworkConnected(context)) {
-            Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, "No internet connection!", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Retry", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (isNetworkConnected(context)) {
-                                Snackbar.make(coordinatorLayout, "Connected", Snackbar.LENGTH_SHORT).show();
-                                context.startActivity(new Intent(context, context.getClass()));
-                            } else {
-                                checkNet(coordinatorLayout, context);
-
-                            }
-                        }
-                    });
-
-            snackbar.show();
-        }
-    }
-
     private static boolean isNetworkConnected(Context context) {
         boolean result = false;
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -61,5 +40,26 @@ public class NetworkHelper {
             }
         }
         return result;
+    }
+
+    public void checkNet(final CoordinatorLayout coordinatorLayout, final Context context) {
+        if (!isNetworkConnected(context)) {
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, "No internet connection!", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (isNetworkConnected(context)) {
+                                Snackbar.make(coordinatorLayout, "Connected", Snackbar.LENGTH_SHORT).show();
+                                context.startActivity(new Intent(context, context.getClass()));
+                            } else {
+                                checkNet(coordinatorLayout, context);
+
+                            }
+                        }
+                    });
+
+            snackbar.show();
+        }
     }
 }

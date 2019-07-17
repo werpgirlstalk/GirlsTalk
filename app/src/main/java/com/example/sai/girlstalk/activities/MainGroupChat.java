@@ -27,16 +27,14 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 public class MainGroupChat extends AppCompatActivity {
 
     private static int SIGN_IN_REQUEST_CODE = 1;
-    private FirebaseListAdapter<ChatMessege> adapter;
     RelativeLayout activity_main;
     EmojiconEditText emojiconEditText;
     ImageView memojibtn, submitbtn;
     EmojIconActions emojIconActions;
     FloatingActionButton fab;
     ListView listview;
-
     DatabaseReference mGroupRef;
-
+    private FirebaseListAdapter<ChatMessege> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

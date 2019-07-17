@@ -32,8 +32,8 @@ public class Register2 extends AppCompatActivity {
     TextView name;
     LinearLayout input1, input2, input3;
     Animation slideleft, slideright;
-    private EditText mailid, pass, confirmpass;
     FloatingActionButton mFloatingActionButton;
+    private EditText mailid, pass, confirmpass;
     private FirebaseAuth firebaseAuth;
     private String emailString;
     private String nametxt;
