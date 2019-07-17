@@ -18,29 +18,28 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         app:srcCompat="@drawable/user" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="( View Profile )"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:textColor="#192A56"
-        android:textSize="15sp"
-        android:id="@+id/viewprofile"
-        android:layout_toRightOf="@id/imageView"
-        />
 
     <TextView
+        android:id="@+id/viewprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/imageView"
+        android:text="( View Profile )"
+        android:textColor="#192A56"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
+        android:layout_below="@+id/imageView"
+        android:fontFamily="monospace"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Wonder Woman"
-        android:textStyle="bold"
         android:textSize="18sp"
-        android:fontFamily="monospace"
-        android:layout_below="@+id/imageView"
-         />
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

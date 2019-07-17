@@ -30,9 +30,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
+            android:text="Rutvik"
             android:textColor="#fff"
             android:textSize="22sp"
-            android:text="Rutvik"
             android:textStyle="bold" />
 
         <TextView
@@ -43,9 +43,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
+            android:text="Maharashtra"
             android:textColor="#fff"
             android:textSize="18sp"
-            android:text="Maharashtra"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -80,8 +80,8 @@
         android:layout_below="@+id/rtext"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
-        android:numStars="5"
-        android:isIndicator="true"/>
+        android:isIndicator="true"
+        android:numStars="5" />
 
     <View
         android:id="@+id/shadow"
@@ -95,8 +95,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/shadow"
-        />
+        android:layout_below="@+id/shadow" />
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -105,6 +104,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        tools:context=".MainActivity">
-    </android.support.design.widget.CoordinatorLayout>
+        tools:context=".MainActivity"></android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>

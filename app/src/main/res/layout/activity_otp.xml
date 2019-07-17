@@ -8,86 +8,89 @@
     tools:context="com.example.sai.girlstalk.activities.OTP">
 
     <RelativeLayout
+        android:id="@+id/rel1"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:id="@+id/rel1"
         android:background="@drawable/redback">
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="9dp"
             android:layout_marginRight="9dp"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/ic_phone_iphone_black_24dp" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView2Phone"
-        android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:text="Provide Phone no. with Country code"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:padding="10dp"
+        android:text="Provide Phone no. with Country code"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <View
+        android:id="@+id/mView"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#000"
-        android:id="@+id/mView"
         android:layout_above="@+id/exampletxt"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:background="#000" />
+
     <TextView
+        android:id="@+id/exampletxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="For example .. +91123456789 (+91 is the country code and the rest is the phone number)"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:text="For example .. +91123456789 (+91 is the country code and the rest is the phone number)"
         android:textAlignment="center"
-        android:id="@+id/exampletxt"
-        android:padding="10dp"/>
+        android:textStyle="italic" />
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:ccp_defaultNameCode="In"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/rel1"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        app:ccp_defaultNameCode="In" />
+
     <EditText
         android:id="@+id/Phonenoedittext"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/rel1"
-        android:layout_marginTop="55dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="100dp"
-        android:ems="10"
-        android:padding="10dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/edittext_bck"
+        android:ems="10"
+        android:hint="Phone No."
         android:inputType="phone"
-        android:hint="Phone No."/>
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/PhoneVerify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Phonenoedittext"
-        android:layout_marginTop="35dp"
-        android:text="Send OTP"
-        android:background="@drawable/round_btn"
-        android:layout_alignLeft="@+id/Phonenoedittext"
         android:layout_alignStart="@+id/Phonenoedittext"
+        android:layout_alignLeft="@+id/Phonenoedittext"
+        android:layout_alignEnd="@+id/Phonenoedittext"
         android:layout_alignRight="@+id/Phonenoedittext"
-        android:layout_alignEnd="@+id/Phonenoedittext" />
+        android:layout_marginTop="35dp"
+        android:background="@drawable/round_btn"
+        android:text="Send OTP" />
 
 </RelativeLayout>

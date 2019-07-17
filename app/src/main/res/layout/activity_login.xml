@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -37,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
+
                 android:textColorHint="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -45,7 +45,7 @@
                     android:id="@+id/loginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textColor="@android:color/black" />
 
@@ -66,7 +66,7 @@
                     android:id="@+id/loginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColor="@android:color/black" />
 
@@ -79,7 +79,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="8dp"
-                android:text="Forgot Password ?"
+                android:text="@string/forgot_password"
                 android:textSize="16sp" />
 
             <ProgressBar
@@ -91,8 +91,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:visibility="invisible"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:visibility="invisible" />
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/loginBtn"
@@ -102,7 +102,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="@android:color/holo_purple"
-                android:text="Login" />
+                android:text="@string/login" />
 
         </LinearLayout>
     </android.support.design.card.MaterialCardView>
@@ -115,6 +115,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/werp_logo"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +134,7 @@
         android:drawablePadding="10dp"
         android:fontFamily="sans-serif"
         android:paddingStart="10sp"
-        android:text="Sign in with Google"
+        android:text="@string/sign_in_with_google"
         android:textAllCaps="false"
         android:textColor="#000"
         android:textSize="18sp"
@@ -144,19 +145,18 @@
         tools:ignore="RtlSymmetry" />
 
     <TextView
+        android:id="@+id/newAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/newAccountBtn"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Don't Have An Account? Click Here"
-        android:textColor="@android:color/black"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/don_t_have_an_account_click_here"
+        android:textColor="@android:color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleLoginBtn" />
-
 
 
 </android.support.constraint.ConstraintLayout>
