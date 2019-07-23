@@ -15,8 +15,7 @@ import com.example.sai.girlstalk.models.Group;
 
 import java.util.ArrayList;
 
-public class GroupRecyclerAdapter extends RecyclerView.Adapter<GroupRecyclerAdapter.ViewHolder>
-{
+public class GroupRecyclerAdapter extends RecyclerView.Adapter<GroupRecyclerAdapter.ViewHolder> {
 
     private ArrayList<Group> list;
     private Context mContext;
@@ -36,15 +35,14 @@ public class GroupRecyclerAdapter extends RecyclerView.Adapter<GroupRecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i)
-    {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Group current = list.get(i);
         viewHolder.groupTitle.setText(current.getTitle());
 
         viewHolder.itemView.setOnClickListener(v ->
         {
-            Intent intent = new Intent(mContext,GroupChatActivity.class);
-            intent.putExtra("GROUP TITLE",current.getTitle());
+            Intent intent = new Intent(mContext, GroupChatActivity.class);
+            intent.putExtra("GROUP TITLE", current.getTitle());
             mContext.startActivity(intent);
         });
     }
@@ -54,8 +52,7 @@ public class GroupRecyclerAdapter extends RecyclerView.Adapter<GroupRecyclerAdap
         return list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder
-    {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView groupTitle;
 
         ViewHolder(@NonNull View itemView) {

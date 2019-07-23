@@ -19,6 +19,8 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 public class SpeakerLabelsDiarization {
+    private static CountDownLatch lock = new CountDownLatch(1);
+
     public static class RecoToken {
         private Double startTime;
         private Double endTime;
@@ -201,7 +203,4 @@ public class SpeakerLabelsDiarization {
         }
 
     }
-
-
-    private static CountDownLatch lock = new CountDownLatch(1);
 }

@@ -7,6 +7,13 @@ public class GroupModel {
     private String groupLocation;
     private String groupTitle;
 
+    public GroupModel(String groupIcon, String groupMembers, String groupLocation, String groupTitle) {
+        this.groupIcon = groupIcon;
+        this.groupMembers = groupMembers;
+        this.groupLocation = groupLocation;
+        this.groupTitle = groupTitle;
+    }
+
     public String getGroupIcon() {
         return groupIcon;
     }
@@ -36,13 +43,6 @@ public class GroupModel {
     }
 
     public void setGroupTitle(String groupTitle) {
-        this.groupTitle = groupTitle;
-    }
-
-    public GroupModel(String groupIcon, String groupMembers, String groupLocation, String groupTitle) {
-        this.groupIcon = groupIcon;
-        this.groupMembers = groupMembers;
-        this.groupLocation = groupLocation;
         this.groupTitle = groupTitle;
     }
 }

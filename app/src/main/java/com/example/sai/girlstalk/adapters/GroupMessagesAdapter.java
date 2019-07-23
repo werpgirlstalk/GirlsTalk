@@ -17,14 +17,12 @@ import com.example.sai.girlstalk.utils.FirebaseUtils;
 
 import java.util.List;
 
-public class GroupMessagesAdapter extends RecyclerView.Adapter<GroupMessagesAdapter.GroupMessageViewHolder>
-{
+public class GroupMessagesAdapter extends RecyclerView.Adapter<GroupMessagesAdapter.GroupMessageViewHolder> {
     private List<GroupMessage> messages;
     private Context context;
     private int viewWidth;
 
-    public GroupMessagesAdapter(List<GroupMessage> messages, Context context)
-    {
+    public GroupMessagesAdapter(List<GroupMessage> messages, Context context) {
         this.messages = messages;
         this.context = context;
 
@@ -34,45 +32,44 @@ public class GroupMessagesAdapter extends RecyclerView.Adapter<GroupMessagesAdap
 
     @NonNull
     @Override
-    public GroupMessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
-       View finalView = LayoutInflater.from(context).inflate(R.layout.custom_messages_list_layout,parent,false);
+    public GroupMessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View finalView = LayoutInflater.from(context).inflate(R.layout.custom_messages_list_layout, parent, false);
         return new GroupMessageViewHolder(finalView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GroupMessageViewHolder groupMessageViewHolder, int position)
-    {
+    public void onBindViewHolder(@NonNull GroupMessageViewHolder groupMessageViewHolder, int position) {
         GroupMessage currentMessage = messages.get(position);
         groupMessageViewHolder.message.setText(currentMessage.getMessage());
         if (FirebaseUtils.getInstance().getAuthInstance().getCurrentUser().getEmail().equals(currentMessage.getSender().getEmail()))
             groupMessageViewHolder.messageParent.setGravity(Gravity.END);
         else groupMessageViewHolder.messageParent.setGravity(Gravity.START);
     }
-    public List<GroupMessage> getData (){return messages;}
 
-    public void addMessage (GroupMessage newMessage)
-    {
+    public List<GroupMessage> getData() {
+        return messages;
+    }
+
+    public void addMessage(GroupMessage newMessage) {
         messages.add(newMessage);
         notifyDataSetChanged();
     }
 
-    public void addMessages(List<GroupMessage> messageList)
-    {
+    public void addMessages(List<GroupMessage> messageList) {
         messages.addAll(messageList);
         notifyDataSetChanged();
     }
 
     @Override
-    public int getItemCount() { return messages.size(); }
+    public int getItemCount() {
+        return messages.size();
+    }
 
-    public class GroupMessageViewHolder extends RecyclerView.ViewHolder
-    {
+    public class GroupMessageViewHolder extends RecyclerView.ViewHolder {
         public TextView message;
         public LinearLayout messageParent;
 
-        public GroupMessageViewHolder(View view)
-        {
+        public GroupMessageViewHolder(View view) {
             super(view);
             message = view.findViewById(R.id.message);
             messageParent = view.findViewById(R.id.messageLayoutParent);

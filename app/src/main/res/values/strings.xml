@@ -7,4 +7,19 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="empowering_woman_through_research">Empowering woman through research</string>
+    <string name="groups_nearby">Groups Nearby</string>
+    <string name="create_group">Create Group</string>
+    <string name="view_more">View More</string>
+    <string name="messege">Messege....</string>
+    <string name="hi_user">Hi,User</string>
+    <string name="enter_email">Enter Email...</string>
+    <string name="enter_password">Enter Password...</string>
+    <string name="enter_password_again_to_confirm">Enter Password again to confirm...</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="login">Login</string>
+    <string name="werp_logo">WERP logo</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="don_t_have_an_account_click_here">Don\'t Have An Account? Click Here</string>
 </resources>

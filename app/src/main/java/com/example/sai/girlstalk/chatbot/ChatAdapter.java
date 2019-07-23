@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.example.sai.GirlsTalk.R;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     public ChatAdapter(ArrayList<Message> messageArrayList) {
-        this.messageArrayList=messageArrayList;
+        this.messageArrayList = messageArrayList;
 
     }
 
@@ -51,7 +50,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         Message message = messageArrayList.get(position);
-        if (message.getId()!=null && message.getId().equals("1")) {
+        if (message.getId() != null && message.getId().equals("1")) {
             return SELF;
         }
 
@@ -63,17 +62,17 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Message message = messageArrayList.get(position);
         message.setMessage(message.getMessage());
         ((ViewHolder) holder).message.setText(message.getMessage());
-        }
+    }
 
     @Override
     public int getItemCount() {
-            return messageArrayList.size();
+        return messageArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView message;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             message = (TextView) itemView.findViewById(R.id.message);
 

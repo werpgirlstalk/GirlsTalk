@@ -8,6 +8,7 @@ import com.example.sai.GirlsTalk.R;
 
 public class NewsDetails extends AppCompatActivity {
     private WebView mwebview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

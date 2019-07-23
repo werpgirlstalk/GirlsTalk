@@ -1,12 +1,12 @@
 package com.example.sai.girlstalk.models;
 
-public class UserProfile
-{
+public class UserProfile {
     private String profilePictureUrl;
     private String description;
     private String email;
 
-    public UserProfile() {}
+    public UserProfile() {
+    }
 
     public UserProfile(String profilePictureUrl, String description, String email) {
         this.profilePictureUrl = profilePictureUrl;

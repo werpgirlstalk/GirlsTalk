@@ -5,20 +5,6 @@ import android.os.Parcelable;
 
 public class ChildList implements Parcelable {
 
-    private String title;
-    private String body;
-
-
-    public ChildList(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
-    protected ChildList(Parcel in) {
-        title = in.readString();
-        body = in.readString();
-    }
-
     public static final Creator<ChildList> CREATOR = new Creator<ChildList>() {
         @Override
         public ChildList createFromParcel(Parcel in) {
@@ -30,7 +16,18 @@ public class ChildList implements Parcelable {
             return new ChildList[size];
         }
     };
+    private String title;
+    private String body;
 
+    public ChildList(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    protected ChildList(Parcel in) {
+        title = in.readString();
+        body = in.readString();
+    }
 
     public String getBody() {
         return body;

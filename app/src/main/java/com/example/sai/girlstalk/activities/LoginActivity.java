@@ -13,15 +13,15 @@ import android.widget.Toast;
 import com.example.sai.GirlsTalk.R;
 import com.example.sai.girlstalk.dialogs.ForgotPasswordDialog;
 import com.example.sai.girlstalk.viewModels.UserViewModel;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -121,4 +121,16 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Objects.requireNonNull(getSupportActionBar()).show();
+
+    }
 }

@@ -8,9 +8,10 @@ public class Group {
     private String description;
     private List<UserProfile> members;
 
-    public Group() {}
+    public Group() {
+    }
 
-    public Group(String title, String icon, String description,List<UserProfile> members) {
+    public Group(String title, String icon, String description, List<UserProfile> members) {
         this.title = title;
         this.icon = icon;
         this.description = description;

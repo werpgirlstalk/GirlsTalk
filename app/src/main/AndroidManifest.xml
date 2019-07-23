@@ -21,9 +21,10 @@
         <activity android:name="com.example.sai.girlstalk.activities.SearchActivity">
 
         </activity>
-        <activity android:name="com.example.sai.girlstalk.activities.TollFree"
-            android:label="Emergency Numbers"/>
-        <activity android:name="com.example.sai.girlstalk.activities.Splash" >
+        <activity
+            android:name="com.example.sai.girlstalk.activities.TollFree"
+            android:label="Emergency Numbers" />
+        <activity android:name="com.example.sai.girlstalk.activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +35,7 @@
         <activity
             android:name="com.example.sai.girlstalk.activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 
@@ -42,15 +43,14 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name="com.example.sai.girlstalk.activities.OTP">
-        </activity>
+        <activity android:name="com.example.sai.girlstalk.activities.OTP" />
         <activity android:name="com.example.sai.girlstalk.activities.Register1" />
         <activity android:name="com.example.sai.girlstalk.activities.Register2" />
         <activity android:name="com.example.sai.girlstalk.activities.LoginActivity" />
         <activity android:name="com.example.sai.girlstalk.activities.GroupChatActivity" />
-        <activity android:name="com.example.sai.girlstalk.activities.NewsDetails"></activity>
-        <activity android:name="com.example.sai.girlstalk.activities.ExecuteRSS"></activity>
-        <activity android:name="com.example.sai.girlstalk.activities.MainGroupChat"/>
+        <activity android:name="com.example.sai.girlstalk.activities.NewsDetails" />
+        <activity android:name="com.example.sai.girlstalk.activities.ExecuteRSS" />
+        <activity android:name="com.example.sai.girlstalk.activities.MainGroupChat" />
         <activity
             android:name="com.example.sai.girlstalk.activities.Profile"
             android:label="My Profile" />

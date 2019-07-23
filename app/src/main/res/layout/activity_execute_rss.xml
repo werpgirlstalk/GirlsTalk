@@ -8,9 +8,8 @@
     tools:showIn="@layout/activity_execute_rss">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:reverseLayout="false"
-        android:id="@+id/recyclerview"
-        />
+        app:reverseLayout="false" />
 </RelativeLayout>

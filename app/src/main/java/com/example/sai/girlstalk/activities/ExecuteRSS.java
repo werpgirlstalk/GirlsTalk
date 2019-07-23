@@ -23,7 +23,7 @@ public class ExecuteRSS extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         //Call Read rss asyntask to fetch rss
         ReadRSS readRss = new ReadRSS(this, recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         readRss.execute();
     }
 

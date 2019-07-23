@@ -13,14 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-
 import com.example.sai.GirlsTalk.R;
 import com.example.sai.girlstalk.models.StoryModel;
 
 import java.util.ArrayList;
 
-public class StoryRecyclerAdapter extends RecyclerView.Adapter<StoryRecyclerAdapter.ViewHolder>
-{
+public class StoryRecyclerAdapter extends RecyclerView.Adapter<StoryRecyclerAdapter.ViewHolder> {
 
     private ArrayList<StoryModel> list;
     private Context mContext;
@@ -34,7 +32,7 @@ public class StoryRecyclerAdapter extends RecyclerView.Adapter<StoryRecyclerAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
-        View view = layoutInflater.inflate(R.layout.stories_row,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.stories_row, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -56,11 +54,14 @@ public class StoryRecyclerAdapter extends RecyclerView.Adapter<StoryRecyclerAdap
     }
 
     @Override
-    public int getItemCount() { return list.size(); }
+    public int getItemCount() {
+        return list.size();
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView thumbnail;
         TextView title;
+
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 

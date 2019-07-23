@@ -3,10 +3,11 @@ package com.example.sai.girlstalk.activities;
 public class StateNames {
     private String statenames;
 
-    public StateNames(){
+    public StateNames() {
         // empty constructor
     }
-    public StateNames(String statenames){
+
+    public StateNames(String statenames) {
         statenames = this.statenames;
     }
 

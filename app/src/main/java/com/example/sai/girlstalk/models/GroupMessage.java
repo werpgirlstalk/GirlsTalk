@@ -1,7 +1,6 @@
 package com.example.sai.girlstalk.models;
 
-public class GroupMessage
-{
+public class GroupMessage {
     private String message;
     private String dateSent;
     private UserProfile sender;

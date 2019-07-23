@@ -15,8 +15,7 @@ import java.util.List;
 public class UserViewModel extends AndroidViewModel {
     private UserRepository userRepository;
 
-    public UserViewModel(@NonNull Application application)
-    {
+    public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = UserRepository.getInstance(getApplication());
     }
@@ -37,29 +36,24 @@ public class UserViewModel extends AndroidViewModel {
         return userRepository.resetPassword(email);
     }
 
-    public LiveData<User> getUser(String email)
-    {
+    public LiveData<User> getUser(String email) {
         return userRepository.getUser(email);
     }
 
-    public LiveData<List<UserProfile>> getFriendRequests(String userEmail)
-    {
+    public LiveData<List<UserProfile>> getFriendRequests(String userEmail) {
         return userRepository.getFriendRequests(userEmail);
     }
 
-    public LiveData<List<User>> getUsers(String username)
-    {
+    public LiveData<List<User>> getUsers(String username) {
         return userRepository.getUsers(username);
     }
 
-    public LiveData<Boolean> sendFriendRequest(String userEmail, UserProfile currentUser)
-    {
-        return userRepository.sendFriendRequest(userEmail,currentUser);
+    public LiveData<Boolean> sendFriendRequest(String userEmail, UserProfile currentUser) {
+        return userRepository.sendFriendRequest(userEmail, currentUser);
     }
 
-    public LiveData<Boolean> acceptFriendRequest(String email,UserProfile friend)
-    {
-        return userRepository.acceptFriendRequest(email,friend);
+    public LiveData<Boolean> acceptFriendRequest(String email, UserProfile friend) {
+        return userRepository.acceptFriendRequest(email, friend);
     }
 
 }

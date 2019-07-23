@@ -11,7 +11,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.sai.girlstalk.adapters.FeedsAdapter;
-import com.example.sai.girlstalk.utils.NetworkHelper;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,12 +27,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ReadRSS extends AsyncTask<Void, Void, Void> {
     Context context;
-    private CoordinatorLayout coordinatorLayout;
     String address = "http://www.sciencemag.org/rss/news_current.xml";
     ProgressDialog progressDialog;
     ArrayList<FeedItem> feedItems;
     RecyclerView recyclerView;
     URL url;
+    private CoordinatorLayout coordinatorLayout;
 
     public ReadRSS(Context context, RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
@@ -45,9 +44,9 @@ public class ReadRSS extends AsyncTask<Void, Void, Void> {
     //before fetching of rss statrs show progress to user
     @Override
     protected void onPreExecute() {
-        if (isNetworkAvailable()){
+        if (isNetworkAvailable()) {
             progressDialog.show();
-        }else {
+        } else {
             progressDialog.hide();
             Toast.makeText(context, "No internet :(", Toast.LENGTH_SHORT).show();
         }
@@ -61,15 +60,16 @@ public class ReadRSS extends AsyncTask<Void, Void, Void> {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
     //This method will execute in background so in this method download rss feeds
     @Override
     protected Void doInBackground(Void... params) {
         //call process xml method to process document we downloaded from getData() method
-       if (isNetworkAvailable()){
-           ProcessXml(Getdata());
-       }else{
-           Log.i("TAG","error");
-       }
+        if (isNetworkAvailable()) {
+            ProcessXml(Getdata());
+        } else {
+            Log.i("TAG", "error");
+        }
 
 
         return null;
@@ -78,14 +78,14 @@ public class ReadRSS extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        if (isNetworkAvailable()){
+        if (isNetworkAvailable()) {
             progressDialog.dismiss();
             FeedsAdapter adapter = new FeedsAdapter(context, feedItems);
             recyclerView.addItemDecoration(new VerticalSpace(20));
             recyclerView.setAdapter(adapter);
 
-        }else{
-            Log.i("TAG","error");
+        } else {
+            Log.i("TAG", "error");
         }
 
     }
@@ -123,7 +123,7 @@ public class ReadRSS extends AsyncTask<Void, Void, Void> {
 
                 }
             }
-        }else if (!isNetworkAvailable()){
+        } else if (!isNetworkAvailable()) {
             Toast.makeText(context, "Error loading data :(", Toast.LENGTH_SHORT).show();
         }
     }

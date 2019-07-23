@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,19 +16,21 @@
         android:textColor="#30336B"
         android:textSize="32sp"
         android:textStyle="bold" />
+
     <ImageView
+        android:id="@+id/Wlogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/logosplash"
-        android:contentDescription="Logo"
         android:layout_centerInParent="true"
-        android:id="@+id/Wlogo"/>
+        android:contentDescription="Logo"
+        android:src="@mipmap/logosplash" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empowering_woman_through_research"
         android:layout_below="@+id/Wlogo"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-        android:textColor="#30336B"/>
+        android:text="@string/empowering_woman_through_research"
+        android:textColor="#30336B"
+        android:textSize="18sp" />
 </RelativeLayout>

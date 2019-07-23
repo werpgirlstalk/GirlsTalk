@@ -13,7 +13,6 @@ import com.example.sai.girlstalk.utils.ClickListener;
  */
 
 
-
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
     private GestureDetector gestureDetector;
